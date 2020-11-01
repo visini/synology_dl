@@ -6,6 +6,11 @@ if "VERSION" in os.environ:
     VERSION = os.getenv("VERSION")
 
 
+APP_NAME = "App"
+if "APP_NAME" in os.environ:
+    APP_NAME = os.getenv("APP_NAME")
+
+
 APP = ["main.py"]
 DATA_FILES = []
 OPTIONS = {
@@ -20,7 +25,7 @@ OPTIONS = {
 
 setup(
     app=APP,
-    name="Synology DL",
+    name=APP_NAME,
     data_files=DATA_FILES,
     options={"py2app": OPTIONS},
     setup_requires=["py2app"],
