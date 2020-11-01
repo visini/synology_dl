@@ -7,3 +7,4 @@ dist
 build
 .npm
 .node_repl_history
+.eggs

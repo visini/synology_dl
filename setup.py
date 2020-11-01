@@ -2,22 +2,22 @@
 
 from setuptools import setup
 
-APP = ['synology_dl.py']
+APP = ["main.py"]
 DATA_FILES = []
 OPTIONS = {
-    'argv_emulation': True,
-    'iconfile': 'icon.icns',
-    'plist': {
-        'CFBundleShortVersionString': '0.2.0',
-        'LSUIElement': True,
+    "argv_emulation": True,
+    "iconfile": "icon.icns",
+    "plist": {
+        "CFBundleShortVersionString": "0.3.0",
+        "LSUIElement": True,
     },
-    'packages': ['rumps'],
+    "packages": ["rumps"],
 }
 
 setup(
     app=APP,
-    name='Synology DL',
+    name="Synology DL",
     data_files=DATA_FILES,
-    options={'py2app': OPTIONS},
-    setup_requires=['py2app'],
+    options={"py2app": OPTIONS},
+    setup_requires=["py2app"],
 )
