@@ -1,4 +1,4 @@
-APP_NAME := Synology DL
+APP_NAME := "Synology DL"
 
 ifdef VERSION
 VERSION_SET := 1
