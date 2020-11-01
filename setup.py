@@ -1,6 +1,10 @@
-# python3 setup.py py2app
-
+import os
 from setuptools import setup
+
+VERSION = "0.0.1"
+if "VERSION" in os.environ:
+    VERSION = os.getenv("VERSION")
+
 
 APP = ["main.py"]
 DATA_FILES = []
@@ -8,7 +12,7 @@ OPTIONS = {
     "argv_emulation": True,
     "iconfile": "icon.icns",
     "plist": {
-        "CFBundleShortVersionString": "0.3.0",
+        "CFBundleShortVersionString": VERSION,
         "LSUIElement": True,
     },
     "packages": ["rumps"],
