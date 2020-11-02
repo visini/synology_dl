@@ -4,6 +4,8 @@
 
 Menu bar utility app (macOS) for controlling synology download station.
 
+![Screenshot](screenshot.png)
+
 ## Config and customization
 
 ```conf
@@ -16,4 +18,4 @@ password     = password
 destinations = NAS/folder_1,NAS/folder_2
 ```
 
-See `Makefile` for how to debug, build, and release.
+See `Makefile` for how to install, debug, build, and release. Or download the [latest release](https://github.com/visini/synology_dl/releases).
