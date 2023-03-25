@@ -6,6 +6,11 @@ Menu bar utility app (macOS) for controlling synology download station.
 
 ![Screenshot](screenshot.png)
 
+## DSM Compatibility
+
+- For `DSM 6` use `v0.3.x`
+- For `DSM 7` use `v0.4.x`
+
 ## Config and customization
 
 ```conf

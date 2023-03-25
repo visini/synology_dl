@@ -3,13 +3,13 @@ authors = ["Camillo Visini <c.visini@gmail.com>"]
 description = "Menu bar utility app (macOS) for controlling synology download station."
 license = "MIT"
 name = "synology_dl"
-version = "0.3.2"
+version = "0.4.0"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-rumps = "^0.3.0"
+python = "^3.10"
+rumps = "^0.4.0"
 xerox = "^0.4.1"
-requests = "^2.24.0"
+requests = "^2.28.0"
 
 [tool.poetry.dev-dependencies]
 
