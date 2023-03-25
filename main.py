@@ -2,7 +2,7 @@ import os
 import platform
 import rumps
 import xerox
-import requests
+import requests as rq
 import json
 import configparser
 
@@ -90,7 +90,9 @@ class SynologyDLApp(object):
 
     def auth(self):
         auth_endpoint = f"{self.url_auth}?api=SYNO.API.Auth&version=6&method=login&account={self.username}&passwd={self.password}&session=FileStation&format=cookie"
-        r = requests.get(auth_endpoint)
+        r = rq.get(auth_endpoint)
+        print("a",auth_endpoint)
+        print("b",r.text)
         rj = json.loads(r.text)
         if r.status_code != 200 or not rj["success"]:
             print("Auth failed with response data: {}".format(rj))
@@ -110,7 +112,7 @@ class SynologyDLApp(object):
             "method": "logout",
             "session": "DownloadStation",
         }
-        r = requests.post(url=self.url_auth, data=data)
+        r = rq.post(url=self.url_auth, data=data)
         rj = json.loads(r.text)
         if r.status_code != 200 or not rj["success"]:
             print("Logout failed with response data: {}".format(rj))
@@ -134,7 +136,7 @@ class SynologyDLApp(object):
             "uri": magnet,
             "destination": destination,
         }
-        r = requests.post(self.url_ds, data=data)
+        r = rq.post(self.url_ds, data=data)
         rj = json.loads(r.text)
         if r.status_code != 200 or not rj["success"]:
             print("Create failed with response data: {}".format(rj))
@@ -192,7 +194,7 @@ class SynologyDLApp(object):
         ) = self.read_config(config_file)
 
         self.host = self.host + "/webapi"
-        self.url_auth = self.host + "/webapi/entry.cgi"
+        self.url_auth = self.host + "/entry.cgi"
         self.url_ds = self.host + "/DownloadStation/task.cgi"
 
         self.destinations = self.destinations.split(",")
