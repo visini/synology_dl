@@ -89,16 +89,8 @@ class SynologyDLApp(object):
         return username, host, password, destinations
 
     def auth(self):
-        data = {
-            "api": "SYNO.API.Auth",
-            "version": "2",
-            "method": "login",
-            "account": self.username,
-            "passwd": self.password,
-            "session": "DownloadStation",
-            "format": "sid",
-        }
-        r = requests.post(url=self.url_auth, data=data)
+        auth_endpoint = f"{self.url_auth}?api=SYNO.API.Auth&version=6&method=login&account={self.username}&passwd={self.password}&session=FileStation&format=cookie"
+        r = requests.get(auth_endpoint)
         rj = json.loads(r.text)
         if r.status_code != 200 or not rj["success"]:
             print("Auth failed with response data: {}".format(rj))
@@ -200,7 +192,7 @@ class SynologyDLApp(object):
         ) = self.read_config(config_file)
 
         self.host = self.host + "/webapi"
-        self.url_auth = self.host + "/auth.cgi"
+        self.url_auth = self.host + "/webapi/entry.cgi"
         self.url_ds = self.host + "/DownloadStation/task.cgi"
 
         self.destinations = self.destinations.split(",")
